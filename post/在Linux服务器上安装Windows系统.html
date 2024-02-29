@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="404, paipai的博客">
+    <meta name="keywords" content="在Linux服务器上安装Windows系统, paipai的博客">
     <meta name="description" content="一个游离于互联网边缘的博客网站">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>404 | paipai的博客</title>
+    <title>在Linux服务器上安装Windows系统 | paipai的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">404</h1>
+                    <h1 class="description center-align post-title">在Linux服务器上安装Windows系统</h1>
                 </div>
             </div>
         </div>
@@ -443,28 +443,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-12-11
+                    2024-02-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-12-11
+                    2024-02-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    441
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    2 Min
                 </div>
                 
 
@@ -487,7 +487,165 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="在Linux服务器上安装Windows系统"><a href="#在Linux服务器上安装Windows系统" class="headerlink" title="在Linux服务器上安装Windows系统"></a>在Linux服务器上安装Windows系统</h1><blockquote>
+<p>系统环境：</p>
+<p>雨云2H4G服务器，Ubuntu22.04系统</p>
+<p>安装软件：</p>
+<p>Docker,docker-compose</p>
+</blockquote>
+<h2 id="第一步：创建安装目录"><a href="#第一步：创建安装目录" class="headerlink" title="第一步：创建安装目录"></a>第一步：创建安装目录</h2><p>在终端输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /windows</span><br></pre></td></tr></table></figure>
+
+<p>进入刚刚创建的目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /windows</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="第二步：创建文件"><a href="#第二步：创建文件" class="headerlink" title="第二步：创建文件"></a>第二步：创建文件</h2><p>1,输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim docker-compose.yml</span><br></pre></td></tr></table></figure>
+
+<p>2,在英文输入状态下，点击键盘上的 i (insert),复制粘贴以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line">services:</span><br><span class="line">  windows:</span><br><span class="line">    image: dockurr/windows</span><br><span class="line">    container_name: windows</span><br><span class="line">    devices:</span><br><span class="line">      - /dev/kvm</span><br><span class="line">    cap_add:</span><br><span class="line">      - NET_ADMIN</span><br><span class="line">    ports:</span><br><span class="line">      - 8006:8006</span><br><span class="line">      - 3389:3389/tcp</span><br><span class="line">      - 3389:3389/udp</span><br><span class="line">    stop_grace_period: 2m</span><br><span class="line">    restart: on-failure</span><br></pre></td></tr></table></figure>
+
+<p>3,点击ESC退出insert模式，在英文输入状态下输入“:wq”,单击enter</p>
+<h2 id="第三步：运行程序"><a href="#第三步：运行程序" class="headerlink" title="第三步：运行程序"></a>第三步：运行程序</h2><p>在终端中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="第四步：安装Windows"><a href="#第四步：安装Windows" class="headerlink" title="第四步：安装Windows"></a>第四步：安装Windows</h2><p>在浏览器输入：你的IP:8006</p>
+<p>随后会自动下载镜像包并且安装Windows</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>记得放行服务器的8006以及3389端口，否则可能出现无法访问的情况</p>
+</blockquote>
+<h2 id="附：环境变量"><a href="#附：环境变量" class="headerlink" title="附：环境变量"></a>附：环境变量</h2><h5 id="更改Windows版本"><a href="#更改Windows版本" class="headerlink" title="更改Windows版本"></a>更改Windows版本</h5><p>在docker-compose.yml文件中添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">  VERSION: &quot;win11&quot;</span><br></pre></td></tr></table></figure>
+
+<p>对应的windows版本：</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Source</th>
+<th>Transfer</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>win11</td>
+<td>Windows 11 Pro</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>6.4 GB</td>
+</tr>
+<tr>
+<td>win10</td>
+<td>Windows 10 Pro</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>5.8 GB</td>
+</tr>
+<tr>
+<td>ltsc10</td>
+<td>Windows 10 LTSC</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>4.6 GB</td>
+</tr>
+<tr>
+<td>win81</td>
+<td>Windows 8.1 Pro</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>4.2 GB</td>
+</tr>
+<tr>
+<td>win7</td>
+<td>Windows 7 SP1</td>
+<td>Bob Pony</td>
+<td>Medium</td>
+<td>3.0 GB</td>
+</tr>
+<tr>
+<td>vista</td>
+<td>Windows Vista SP2</td>
+<td>Bob Pony</td>
+<td>Medium</td>
+<td>3.6 GB</td>
+</tr>
+<tr>
+<td>winxp</td>
+<td>Windows XP SP3</td>
+<td>Bob Pony</td>
+<td>Medium</td>
+<td>0.6 GB</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Windows Server 2022</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>4.7 GB</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>Windows Server 2019</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>5.3 GB</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>Windows Server 2016</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>6.5 GB</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>Windows Server 2012 R2</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>4.3 GB</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>Windows Server 2008 R2</td>
+<td>Microsoft</td>
+<td>Fast</td>
+<td>3.0 GB</td>
+</tr>
+<tr>
+<td>core11</td>
+<td>Tiny 11 Core</td>
+<td>Archive.org</td>
+<td>Slow</td>
+<td>2.1 GB</td>
+</tr>
+<tr>
+<td>tiny11</td>
+<td>Tiny 11</td>
+<td>Archive.org</td>
+<td>Slow</td>
+<td>3.8 GB</td>
+</tr>
+<tr>
+<td>tiny10</td>
+<td>Tiny 10</td>
+<td>Archive.org</td>
+<td>Slow</td>
+<td>3.6 GB</td>
+</tr>
+</tbody></table>
+<h5 id="设置核心数以及内存大小"><a href="#设置核心数以及内存大小" class="headerlink" title="设置核心数以及内存大小"></a>设置核心数以及内存大小</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">  RAM_SIZE: &quot;8G&quot;</span><br><span class="line">  CPU_CORES: &quot;4&quot;</span><br></pre></td></tr></table></figure>
+
+<h5 id="更改硬盘大小"><a href="#更改硬盘大小" class="headerlink" title="更改硬盘大小"></a>更改硬盘大小</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">environment:</span><br><span class="line">  DISK_SIZE: &quot;256G&quot;</span><br></pre></td></tr></table></figure>
+
+<h5 id="更改存储位置"><a href="#更改存储位置" class="headerlink" title="更改存储位置"></a>更改存储位置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">   - /var/win:/storage</span><br></pre></td></tr></table></figure>
+
+
                 
             </div>
             <hr/>
@@ -513,7 +671,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.paipai.site/404/index.html">https://blog.paipai.site/404/index.html</a>
+                    <a href="https://blog.paipai.site/post/%E5%9C%A8Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85Windows%E7%B3%BB%E7%BB%9F.html">https://blog.paipai.site/post/%E5%9C%A8Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85Windows%E7%B3%BB%E7%BB%9F.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -981,18 +1139,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/404/index.html">
+                <a href="/post/page.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="404">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="page">
                         
-                        <span class="card-title">404</span>
+                        <span class="card-title">page</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1002,9 +1159,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-29
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1013,7 +1170,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -1021,16 +1177,15 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/404/index.html">
+                <a href="/post/OneAPI%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F.html">
                     <div class="card-image">
                         
+                        <img src="https://cn-sy1.rains3.com/pai-source/API%E8%AF%B4%E6%98%8E%E4%B9%A6/openai%20(1).png" class="responsive-img" alt="OneAPI使用方式">
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="404">
-                        
-                        <span class="card-title">404</span>
+                        <span class="card-title">OneAPI使用方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1041,7 +1196,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-13
                             </span>
                         <span class="publish-author">
                             
@@ -1051,7 +1206,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
